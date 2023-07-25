@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>SecureCity</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}" class="a">Home-page</a></li>
+                <li><a href="{% url 'map-page' %}" class="a">Crime-map</a></li>
+                <li><a href="{% url 'upload_dataset' %}">upload-dataset</a></li>
+                <li><a href="{% url 'report' %}">country-statistics</a></li>
+                <li><a href="{% url 'about' %}" class="a">About</a></li>
+                <li><a href="{% url 'contact' %}" class="a">Contact</a></li>
+                <li><a href="#" class="a">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- <input type="range" min="-180" max="100" step="1" value="0" id="slider"> -->
+   <div class="">
+    <div id="map"></div>
+</div> 
+
+<form id="countryForm" method="post" action="{% url 'get_country_stats' %}">
+    {% csrf_token %}
+    <input type="hidden" name="country_name" id="countryNameField">
+</form>
+
+
+
+</body>
+<footer>
+    <p class="footer">&copy; 2023 SecureCity. All rights reserved.</p>
+</footer>
+</html>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-ajax/dist/leaflet.ajax.min.js"></script>
+
+<script src="{% static 'node.js' %}"></script>

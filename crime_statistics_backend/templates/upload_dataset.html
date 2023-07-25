@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Dataset</title>
+</head>
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<body>
+    <header>
+        <h1>SecureCity</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}" class="a">Home-page</a></li>
+                <li><a href="{% url 'map-page' %}" class="a">Crime-map</a></li>
+                <li><a href="{% url 'upload_dataset' %}">upload-dataset</a></li>
+                <li><a href="{% url 'report' %}">country-statistics</a></li>
+                <li><a href="{% url 'about' %}" class="a">About</a></li>
+                <li><a href="{% url 'contact' %}" class="a">Contact</a></li>
+                <li><a href="#" class="a">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+<div>
+    <h1>Upload Crime Dataset</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Upload</button>
+    </form>
+</div>
+<footer>
+    <p class="footer">&copy; 2023 SecureCity. All rights reserved.</p>
+</footer>
+</body>
+</html>
